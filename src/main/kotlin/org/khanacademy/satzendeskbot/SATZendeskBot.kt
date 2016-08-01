@@ -9,7 +9,7 @@ import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory
 import java.io.File
 
 fun readToken(): String {
-    val filename = "/Users/colin/.sat-zendesk-bot-token"
+    val filename = System.getProperty("user.home") + "/.sat-zendesk-bot-token"
     return File(filename).readText().trim()
 }
 
