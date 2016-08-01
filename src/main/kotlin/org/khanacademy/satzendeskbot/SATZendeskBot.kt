@@ -59,7 +59,7 @@ fun listener(event: SlackMessagePosted, session: SlackSession): Unit {
             .withName("Zendesk Zebra")
 
         session.sendMessage(
-                session.findChannelByName("bot-testing"),
+                session.findChannelByName("sat-monitoring"),
                 msgBuilder.build(),
                 config)
     }
