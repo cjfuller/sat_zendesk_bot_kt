@@ -20,7 +20,7 @@ fun connect(): SlackSession {
     return session
 }
 
-val satExp =  Regex("sat", RegexOption.IGNORE_CASE)
+val satExp =  Regex("\\bsat\\b", RegexOption.IGNORE_CASE)
 val cbExp = Regex("college\\s?board", RegexOption.IGNORE_CASE)
 
 fun isSATMessage(event: SlackMessagePosted): Boolean {
