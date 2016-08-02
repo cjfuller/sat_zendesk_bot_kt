@@ -42,18 +42,12 @@ fun isInZendeskTickets(event: SlackMessagePosted, session: SlackSession): Boolea
 
 
 fun listener(event: SlackMessagePosted, session: SlackSession): Unit {
-    val channel = event.channel.id
-    val content = event.messageContent
-    val attachments = event.attachments
-    println("$channel: Text: $content")
-    attachments.forEach { a: SlackAttachment ->
-        println("$channel: Attachment: $a") }
     if (isSATMessage(event) && isInZendeskTickets(event, session)) {
 
         val msgBuilder = SlackPreparedMessage.Builder()
             .withMessage(event.messageContent)
             .withUnfurl(false)
-        attachments.forEach { msgBuilder.addAttachment(it) }
+        event.attachments.forEach { msgBuilder.addAttachment(it) }
 
         val config = SlackChatConfiguration.getConfiguration()
             .withName("Zendesk Zebra")
